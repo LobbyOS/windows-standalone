@@ -1,4 +1,4 @@
-./archives
-./archives/*
-./compile-php
-./compile-php/*
+/archives
+/archives/*
+/compile-php
+/compile-php/*

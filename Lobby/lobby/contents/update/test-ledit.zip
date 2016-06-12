@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<!--[if lte IE 8]><html class="ng-csp ie ie8 lte9 lte8" data-placeholder-focus="false" lang="en" ><![endif]-->
+<!--[if IE 9]><html class="ng-csp ie ie9 lte9" data-placeholder-focus="false" lang="en" ><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--><html class="ng-csp" data-placeholder-focus="false" lang="en" ><!--<![endif]-->
+	<head data-requesttoken="VQMlCmEfOD4eEABKXHoXPjVZPns3OxkFM29NNS0AQj0=:ljWg9TUGnZ9eiLbiYjWKxSIHiY4Ywg+TB/Y+XUjagyo=">
+		<meta charset="utf-8">
+		<title>
+		ownCloud		</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="referrer" content="never">
+		<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
+		<meta name="apple-itunes-app" content="app-id=543672169">
+		<meta name="theme-color" content="#1d2d44">
+		<link rel="shortcut icon" href="/core/img/favicon.ico">
+		<link rel="apple-touch-icon-precomposed" href="/core/img/favicon-touch.png">
+		<link rel="mask-icon" sizes="any" href="/core/img/favicon-mask.svg" color="#1d2d44">
+					<link rel="stylesheet" href="/core/css/styles.css?v=bfac856228493524d4f410a9f1a10f03" media="screen">
+					<link rel="stylesheet" href="/core/css/inputs.css?v=bfac856228493524d4f410a9f1a10f03" media="screen">
+					<link rel="stylesheet" href="/core/css/header.css?v=bfac856228493524d4f410a9f1a10f03" media="screen">
+					<link rel="stylesheet" href="/core/css/mobile.css?v=bfac856228493524d4f410a9f1a10f03" media="screen">
+					<link rel="stylesheet" href="/core/css/icons.css?v=bfac856228493524d4f410a9f1a10f03" media="screen">
+					<link rel="stylesheet" href="/core/css/fonts.css?v=bfac856228493524d4f410a9f1a10f03" media="screen">
+					<link rel="stylesheet" href="/core/css/apps.css?v=bfac856228493524d4f410a9f1a10f03" media="screen">
+					<link rel="stylesheet" href="/core/css/global.css?v=bfac856228493524d4f410a9f1a10f03" media="screen">
+					<link rel="stylesheet" href="/core/css/fixes.css?v=bfac856228493524d4f410a9f1a10f03" media="screen">
+					<link rel="stylesheet" href="/core/css/multiselect.css?v=bfac856228493524d4f410a9f1a10f03" media="screen">
+					<link rel="stylesheet" href="/core/vendor/jquery-ui/themes/base/jquery-ui.css?v=bfac856228493524d4f410a9f1a10f03" media="screen">
+					<link rel="stylesheet" href="/core/css/jquery-ui-fixes.css?v=bfac856228493524d4f410a9f1a10f03" media="screen">
+					<link rel="stylesheet" href="/core/css/tooltip.css?v=bfac856228493524d4f410a9f1a10f03" media="screen">
+					<link rel="stylesheet" href="/core/css/jquery.ocdialog.css?v=bfac856228493524d4f410a9f1a10f03" media="screen">
+							<script src="/index.php/core/js/oc.js?v=bfac856228493524d4f410a9f1a10f03"></script>
+					<script src="/core/vendor/jquery/jquery.min.js?v=bfac856228493524d4f410a9f1a10f03"></script>
+					<script src="/core/vendor/jquery-migrate/jquery-migrate.min.js?v=bfac856228493524d4f410a9f1a10f03"></script>
+					<script src="/core/vendor/jquery-ui/ui/jquery-ui.custom.js?v=bfac856228493524d4f410a9f1a10f03"></script>
+					<script src="/core/vendor/underscore/underscore.js?v=bfac856228493524d4f410a9f1a10f03"></script>
+					<script src="/core/vendor/moment/min/moment-with-locales.js?v=bfac856228493524d4f410a9f1a10f03"></script>
+					<script src="/core/vendor/handlebars/handlebars.js?v=bfac856228493524d4f410a9f1a10f03"></script>
+					<script src="/core/vendor/blueimp-md5/js/md5.js?v=bfac856228493524d4f410a9f1a10f03"></script>
+					<script src="/core/vendor/bootstrap/js/tooltip.js?v=bfac856228493524d4f410a9f1a10f03"></script>
+					<script src="/core/vendor/backbone/backbone.js?v=bfac856228493524d4f410a9f1a10f03"></script>
+					<script src="/core/vendor/es6-promise/dist/es6-promise.js?v=bfac856228493524d4f410a9f1a10f03"></script>
+					<script src="/core/vendor/davclient.js/lib/client.js?v=bfac856228493524d4f410a9f1a10f03"></script>
+					<script src="/core/js/placeholders.js?v=bfac856228493524d4f410a9f1a10f03"></script>
+					<script src="/core/js/compatibility.js?v=bfac856228493524d4f410a9f1a10f03"></script>
+					<script src="/core/js/jquery.ocdialog.js?v=bfac856228493524d4f410a9f1a10f03"></script>
+					<script src="/core/js/oc-dialogs.js?v=bfac856228493524d4f410a9f1a10f03"></script>
+					<script src="/core/js/js.js?v=bfac856228493524d4f410a9f1a10f03"></script>
+					<script src="/core/js/l10n.js?v=bfac856228493524d4f410a9f1a10f03"></script>
+					<script src="/core/js/octemplate.js?v=bfac856228493524d4f410a9f1a10f03"></script>
+					<script src="/core/js/eventsource.js?v=bfac856228493524d4f410a9f1a10f03"></script>
+					<script src="/core/js/config.js?v=bfac856228493524d4f410a9f1a10f03"></script>
+					<script src="/core/search/js/search.js?v=bfac856228493524d4f410a9f1a10f03"></script>
+					<script src="/core/js/oc-requesttoken.js?v=bfac856228493524d4f410a9f1a10f03"></script>
+					<script src="/core/js/apps.js?v=bfac856228493524d4f410a9f1a10f03"></script>
+					<script src="/core/js/mimetype.js?v=bfac856228493524d4f410a9f1a10f03"></script>
+					<script src="/core/js/mimetypelist.js?v=bfac856228493524d4f410a9f1a10f03"></script>
+					<script src="/core/vendor/snapjs/dist/latest/snap.js?v=bfac856228493524d4f410a9f1a10f03"></script>
+					<script src="/core/vendor/backbone/backbone.js?v=bfac856228493524d4f410a9f1a10f03"></script>
+					<script src="/core/js/oc-backbone.js?v=bfac856228493524d4f410a9f1a10f03"></script>
+					<script src="/core/js/placeholder.js?v=bfac856228493524d4f410a9f1a10f03"></script>
+					<script src="/core/js/jquery.avatar.js?v=bfac856228493524d4f410a9f1a10f03"></script>
+					<script src="/core/js/backgroundjobs.js?v=bfac856228493524d4f410a9f1a10f03"></script>
+					<script src="/core/js/files/fileinfo.js?v=bfac856228493524d4f410a9f1a10f03"></script>
+					<script src="/core/js/files/client.js?v=bfac856228493524d4f410a9f1a10f03"></script>
+					</head>
+	<body id="body-login">
+		<noscript>
+	<div id="nojavascript">
+		<div>
+			This application requires JavaScript for correct operation. Please <a href="http://enable-javascript.com/" target="_blank" rel="noreferrer">enable JavaScript</a> and reload the page.		</div>
+	</div>
+</noscript>
+		<div class="wrapper">
+			<div class="v-align">
+									<header role="banner">
+						<div id="header">
+							<div class="logo svg">
+								<h1 class="hidden-visually">
+									ownCloud								</h1>
+							</div>
+							<div id="logo-claim" style="display:none;"></div>
+						</div>
+					</header>
+									<ul>
+		<li class="error">
+			File not found<br>
+			<p class="hint">The specified document has not been found on the server.</p>
+			<p class="hint"><a href="/index.php">You can click here to return to ownCloud.</a></p>
+		</li>
+	</ul>
+				<div class="push"></div><!-- for sticky footer -->
+			</div>
+		</div>
+		<footer role="contentinfo">
+			<p class="info">
+				<a href="https://owncloud.org" target="_blank" rel="noreferrer">ownCloud</a> – web services under your control			</p>
+		</footer>
+	</body>
+</html>

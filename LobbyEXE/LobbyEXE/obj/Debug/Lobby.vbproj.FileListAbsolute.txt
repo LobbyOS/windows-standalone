@@ -1,0 +1,10 @@
+C:\Program Files\Lobby\LobbyApp\LobbyApp\bin\Debug\Lobby.exe
+C:\Program Files\Lobby\LobbyApp\LobbyApp\bin\Debug\Lobby.pdb
+C:\Program Files\Lobby\LobbyApp\LobbyApp\bin\Debug\Lobby.xml
+C:\Program Files\Lobby\LobbyApp\LobbyApp\obj\Debug\Lobby.MainForm.resources
+C:\Program Files\Lobby\LobbyApp\LobbyApp\obj\Debug\Lobby.PopupForm.resources
+C:\Program Files\Lobby\LobbyApp\LobbyApp\obj\Debug\Lobby.Resources.resources
+C:\Program Files\Lobby\LobbyApp\LobbyApp\obj\Debug\Lobby.vbproj.GenerateResource.Cache
+C:\Program Files\Lobby\LobbyApp\LobbyApp\obj\Debug\Lobby.exe
+C:\Program Files\Lobby\LobbyApp\LobbyApp\obj\Debug\Lobby.xml
+C:\Program Files\Lobby\LobbyApp\LobbyApp\obj\Debug\Lobby.pdb

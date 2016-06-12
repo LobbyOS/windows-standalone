@@ -1,0 +1,10 @@
+C:\Program Files\Lobby\TrayApp\TrayApp\bin\Debug\TrayApp.exe
+C:\Program Files\Lobby\TrayApp\TrayApp\bin\Debug\TrayApp.pdb
+C:\Program Files\Lobby\TrayApp\TrayApp\bin\Debug\TrayApp.xml
+C:\Program Files\Lobby\TrayApp\TrayApp\obj\Debug\TrayApp.MainForm.resources
+C:\Program Files\Lobby\TrayApp\TrayApp\obj\Debug\TrayApp.PopupForm.resources
+C:\Program Files\Lobby\TrayApp\TrayApp\obj\Debug\TrayApp.Resources.resources
+C:\Program Files\Lobby\TrayApp\TrayApp\obj\Debug\LobbyApp.vbproj.GenerateResource.Cache
+C:\Program Files\Lobby\TrayApp\TrayApp\obj\Debug\TrayApp.exe
+C:\Program Files\Lobby\TrayApp\TrayApp\obj\Debug\TrayApp.xml
+C:\Program Files\Lobby\TrayApp\TrayApp\obj\Debug\TrayApp.pdb

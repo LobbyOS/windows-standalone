@@ -1,0 +1,10 @@
+\\VBOXSVR\simsu\Other\projects\Web\Lobby\Zed\Auto\Windows\LobbyEXE\LobbyEXE\bin\Release\Lobby.exe
+\\VBOXSVR\simsu\Other\projects\Web\Lobby\Zed\Auto\Windows\LobbyEXE\LobbyEXE\bin\Release\Lobby.pdb
+\\VBOXSVR\simsu\Other\projects\Web\Lobby\Zed\Auto\Windows\LobbyEXE\LobbyEXE\bin\Release\Lobby.xml
+\\VBOXSVR\simsu\Other\projects\Web\Lobby\Zed\Auto\Windows\LobbyEXE\LobbyEXE\obj\Release\Lobby.MainForm.resources
+\\VBOXSVR\simsu\Other\projects\Web\Lobby\Zed\Auto\Windows\LobbyEXE\LobbyEXE\obj\Release\Lobby.PopupForm.resources
+\\VBOXSVR\simsu\Other\projects\Web\Lobby\Zed\Auto\Windows\LobbyEXE\LobbyEXE\obj\Release\Lobby.Resources.resources
+\\VBOXSVR\simsu\Other\projects\Web\Lobby\Zed\Auto\Windows\LobbyEXE\LobbyEXE\obj\Release\LobbyEXE.vbproj.GenerateResource.Cache
+\\VBOXSVR\simsu\Other\projects\Web\Lobby\Zed\Auto\Windows\LobbyEXE\LobbyEXE\obj\Release\Lobby.exe
+\\VBOXSVR\simsu\Other\projects\Web\Lobby\Zed\Auto\Windows\LobbyEXE\LobbyEXE\obj\Release\Lobby.xml
+\\VBOXSVR\simsu\Other\projects\Web\Lobby\Zed\Auto\Windows\LobbyEXE\LobbyEXE\obj\Release\Lobby.pdb

@@ -2,9 +2,11 @@
 
 Lobby installer for Windows
 
-## Install Lobby
+## HowTo
 
-The folder `Lobby` is the standalone package. `Lobby/lobby` has the PHP code of Lobby.
+The `Lobby` directory is the standalone software. This folder is zipped and distributed for download.
+
+The latest Lobby version is extracted to `Lobby/lobby`. This is done when a new version comes out.
 
 ## Compiling PHP
 

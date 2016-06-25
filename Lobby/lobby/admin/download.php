@@ -7,8 +7,9 @@ use \Lobby\Apps;
 header("Content-type: text/html");
 header('Cache-Control: no-cache');
 
-$id = Request::get("id");
+$appID = Request::get("app");
 $type = Request::get("type");
+$isUpdate = Request::get("isUpdate") !== null;
 
 // Turn off output buffering
 ini_set('output_buffering', 'off');
@@ -23,23 +24,23 @@ while (@ob_end_flush());
 ini_set('implicit_flush', true);
 ob_implicit_flush(true);
 
-if($id == null || CSRF::check() == false){
+if(CSRF::check() === false){
   exit;
 }
 
 if($type == "app"){
   $app = \Lobby\Server::store(array(
     "get" => "app",
-    "id" => $id
+    "id" => $appID
   ));
           
   if($app == "false"){
-    echo "Error - App '<b>{$id}</b>' does not exist in Lobby.";
+    echo "Error - App '<b>{$appID}</b>' does not exist in Lobby.";
     exit;
   }
   $name = $app['name'];
 }else{
-  $name = "Lobby $id";
+  $name = "Lobby $appID";
 }
 $GLOBALS['name'] = $name;
 ?>
@@ -89,11 +90,18 @@ $GLOBALS['last'] = 0;
   }
 };
 
-if($type == "app" && \Lobby\Update::app($id)){
-  $App = new Apps($id);
+if($type === "app" && \Lobby\Update::app($appID)){
+  $App = new Apps($appID);
   $App->enableApp();
   
-  echo "Installed - The app has been installed. <a target='_parent' href='". $App->info["url"] ."'>Open App</a>";
-}else if($type == "lobby" && $redirect = \Lobby\Update::software()){
+  if($isUpdate){
+    $appUpdates = Lobby\DB::getJSONOption("app_updates");
+    if(isset($appUpdates[$appID]))
+      unset($appUpdates[$appID]);
+    Lobby\DB::saveOption("app_updates", json_encode($AppUpdates));
+  }
+  
+  echo "Installed - The app has been " . ($isUpdate ? "updated." : "installed. <a target='_parent' href='". $App->info["url"] ."'>Open App</a>");
+}else if($type === "lobby" && $redirect = \Lobby\Update::software()){
   echo "<a target='_parent' href='$redirect'>Updated Lobby</a>";
 }

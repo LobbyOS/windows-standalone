@@ -6,6 +6,7 @@
 namespace Lobby;
 
 use Lobby\Apps;
+use Lobby\UI\Panel;
 
 class Server {
 
@@ -81,8 +82,8 @@ class Server {
       \Lobby::log("Checkup with server failed ($url) : $error");
       $response = false;
     }
+    
     if($response){
-      
       $response = json_decode($response, true);
       if(is_array($response)){
         DB::saveOption("lobby_latest_version", $response['version']);
@@ -93,11 +94,24 @@ class Server {
           $AppUpdates = array();
           foreach($response['apps'] as $appID => $version){
             $App = new \Lobby\Apps($appID);
-            if($App->info['version'] != $version){
+            if($App->hasUpdate($version)){
               $AppUpdates[$appID] = $version;
             }
           }
           DB::saveOption("app_updates", json_encode($AppUpdates));
+        }
+        
+        if(isset($response["notify"])){
+          foreach($response["notify"]["items"] as $itemID => $item){
+            if(isset($item["href"])){
+              $item["href"] = \Lobby::u($item["href"]);
+            }
+            Panel::addNotifyItem("lobby_server_msg_" . $itemID, $item);
+          }
+          
+          foreach($response["notify"]["remove_items"] as $itemID){
+            Panel::removeNotifyItem("lobby_server_msg_" . $itemID);
+          }
         }
       }
     }

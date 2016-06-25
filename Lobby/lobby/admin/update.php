@@ -1,5 +1,6 @@
 <?php
 require "../load.php";
+use Lobby\Update;
 ?>
 <!DOCTYPE html>
 <html>
@@ -15,13 +16,17 @@ require "../load.php";
     require "$docRoot/admin/inc/sidebar.php";
     ?>
     <div id="workspace">
-      <div class="content">
+      <div class="contents">
         <h1>Update</h1>
-        <p>Lobby and it's apps can be updated automatically. <a href="http://lobby.subinsb.com/docs/update" target="_blank" class="btn">More Info</a></p>
+        <p>Lobby and apps can be updated automatically.</p>
         <a class='btn blue' href='check-updates.php'>Check For Updates</a>
+        <a href="<?php echo L_SERVER;?>/docs/update" target="_blank" class="btn pink">Help</a>
         <?php
-        if(\Request::postParam("action") === null){
-          if(\Lobby::$version < Lobby\DB::getOption("lobby_latest_version") && !isset($_GET['step'])){
+        $action = Request::postParam("action");
+        $step = Request::get("step");
+        
+        if($action === null && $step === null){
+          if(Update::isCoreAvailable()){
         ?>
             <h2>Lobby</h2>
             <p>
@@ -51,8 +56,8 @@ require "../load.php";
             echo sss("Latest Version", "You are using the latest version of Lobby. There are no new releases yet.");
           }
         }
-        if(isset($_GET['step']) && $_GET['step'] != "" && CSRF::check()){
-          $step = $_GET['step'];
+        if($step !== null && CSRF::check()){
+          $step = $step;
           if($step === "1"){
             if(!is_writable(L_DIR)){
               echo ser("Lobby Directory Not Writable", "The Lobby directory (". L_DIR .") is not writable. Make the folder writable to update Lobby.");
@@ -67,24 +72,24 @@ require "../load.php";
             echo \Lobby::l("/admin/update.php?step=2" . CSRF::getParam(), "Start Update", "clear class='btn green'");
           }elseif($step == 2){
             $version = Lobby\DB::getOption("lobby_latest_version");
-            echo '<iframe src="'. L_URL . "/admin/download.php?type=lobby&id=$version". CSRF::getParam() .'" style="border: 0;width: 100%;height: 200px;"></iframe>';
+            echo '<iframe src="'. L_URL . "/admin/download.php?type=lobby". CSRF::getParam() .'" style="border: 0;width: 100%;height: 200px;"></iframe>';
           }
         }
+        $shouldUpdate = Request::postParam("updateApp");
         
-        $AppUpdates = json_decode(Lobby\DB::getOption("app_updates"), true);
-        if(\Request::postParam("action", "") == "updateApps" && CSRF::check()){
-          foreach($AppUpdates as $appID => $neverMindThisVariable){
-            if(isset($_POST[$appID])){
-              echo '<iframe src="'. L_URL . "/admin/download.php?type=app&id={$appID}". CSRF::getParam() .'" style="border: 0;width: 100%;height: 200px;"></iframe>';
-              unset($AppUpdates[$appID]);
-            }
+        if($action === "updateApps" && is_array($shouldUpdate) && CSRF::check()){
+          foreach($shouldUpdate as $appID){
+            echo '<iframe src="'. L_URL . "/admin/download.php?type=app&app={$appID}&isUpdate=1". CSRF::getParam() .'" style="border: 0;width: 100%;height: 200px;"></iframe>';
           }
-          Lobby\DB::saveOption("app_updates", json_encode($AppUpdates));
-          $AppUpdates = json_decode(Lobby\DB::getOption("app_updates"), true);
         }
-        if(!isset($_GET['step']) && isset($AppUpdates) && count($AppUpdates) != 0){
+        if($step === null){
+          echo "<h2>Apps</h2>";
+        }
+        $appUpdates = Update::getApps();
+        if($step === null && empty($appUpdates)){
+          echo "<p>All apps are up to date.</p>";
+        }else if($step === null && isset($appUpdates) && count($appUpdates)){
         ?>
-          <h2>Apps</h2>
           <p>New versions of apps are available. Choose which apps to update from the following :</p>
           <form method="POST" clear>
             <?php CSRF::getInput();?>
@@ -99,11 +104,11 @@ require "../load.php";
               </thead>
               <?php              
               echo "<tbody>";
-              foreach($AppUpdates as $appID => $latest_version){
+              foreach($appUpdates as $appID => $latest_version){
                 $App = new \Lobby\Apps($appID);
                 $AppInfo = $App->info;
                 echo '<tr>';
-                  echo '<td><label><input style="vertical-align:top;display:inline-block;" checked="checked" type="checkbox" name="'. $appID .'" /><span></span></label></td>';
+                  echo '<td><label><input style="vertical-align:top;display:inline-block;" checked="checked" type="checkbox" name="updateApp[]" value="'. $appID .'" /><span></span></label></td>';
                   echo '<td><span style="vertical-align:middle;display:inline-block;margin-left:5px;">'. $AppInfo['name'] .'</span></td>';
                   echo '<td>'. $AppInfo['version'] .'</td>';
                   echo '<td>'. $latest_version .'</td>';

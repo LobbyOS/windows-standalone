@@ -6,7 +6,7 @@
  
 class Assets {
 
-  protected static $css, $js = array();
+  protected static $css = array(), $js = array();
   
   protected static $config = array(
     /**
@@ -135,14 +135,28 @@ class Assets {
   /**
    * @param $type string - Either "js" or "css"
    * @param $params array - List of extra GET parameters to include in URL
+   * @param $customAssets array - Only include some assets
    */
-  public static function getServeURL($type, $params = array()){
+  public static function getServeURL($type, $params = array(), $customAssets = array()){
     $url = self::getURL(self::$config["serveFile"]);
     
     if($type === "css"){
-      $url .= "?assets=" . implode(",", self::$css) . "&type=css";
+      $assets = self::$css;
     }else{
-      $url .= "?assets=" . implode(",", self::$js) . "&type=js";
+      $assets = self::$js;
+    }
+    
+    if(!empty($customAssets)){
+      foreach($assets as $asset => $assetLocation){
+        if(!in_array($asset, $customAssets))
+          unset($assets[$asset]);
+      }
+    }
+    
+    if($type === "css"){
+      $url .= "?assets=" . implode(",", $assets) . "&type=css";
+    }else{
+      $url .= "?assets=" . implode(",", $assets) . "&type=js";
     }
     
     if(count($params) !== 0){
@@ -211,12 +225,14 @@ class Assets {
              * If file doesn't exist or is not under base directory
              */
             if(self::$config["debug"] === true){
-              echo "invalid_file - $assetRelLocation";
+              echo "\n /** Invalid File - $assetRelLocation */\n";
             }
           }else{
             $data = self::preProcess(file_get_contents($assetLocation), $type);
             
             if($data !== null){
+              if(self::$config["debug"] === true)
+                echo "\n/** Asset - $assetRelLocation */\n";
               echo $data;
             }
           }
@@ -235,12 +251,12 @@ class Assets {
     return isset(self::$css[$asset]);
   }
   
-  public static function getJS($asset){
-    return self::$js[$asset];
+  public static function getJS($asset = null){
+    return $asset === null ? self::$js : self::$js[$asset];
   }
   
-  public static function getCSS($asset){
-    return self::$css[$asset];
+  public static function getCSS($asset = null){
+    return $asset === null ? self::$css : self::$css[$asset];
   }
 
 }

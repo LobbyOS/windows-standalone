@@ -9,7 +9,7 @@ use \Lobby\Need;
     <?php
     \Assets::js("admin.apps.js", "/admin/js/apps.js");
     \Assets::css("lobby-store", "/admin/css/lobby-store.css");
-    \Assets::css("view-app", "/admin/css/view-app.css");
+    \Assets::css("apps", "/admin/css/apps.css");
     
     \Lobby::doHook("admin.head.begin");
     \Response::head("App Manager");
@@ -21,7 +21,7 @@ use \Lobby\Need;
     require "$docRoot/admin/inc/sidebar.php";
     ?>
     <div id="workspace">
-      <div class="content">
+      <div class="contents">
         <?php
         $appID = Request::get("app");
         if($appID !== null){
@@ -48,7 +48,7 @@ use \Lobby\Need;
                 <h2>Confirm</h2>
                 <p>Are you sure you want to remove the app <b><?php echo $app;?></b> ?</p>
                 <div clear></div>
-                <a class="btn green" href="<?php echo L_URL ."/admin/install-app.php?action=remove&id={$app}&".CSRF::getParam();?>">Yes, I'm Sure</a>
+                <a class="btn green" href="<?php echo L_URL ."/admin/install-app.php?action=remove&app={$app}&".CSRF::getParam();?>">Yes, I'm Sure</a>
                 <a class="btn red" href="<?php echo L_URL ."/admin/apps.php";?>">No, I'm Not</a>
             <?php
               exit;
@@ -81,7 +81,7 @@ use \Lobby\Need;
               $App = new Apps($appID);
               $requires = $App->info['require'];
               
-              if(version_compare($App->info['version'], $App->info['version'], ">")){
+              if($App->hasUpdate()){
                 /**
                  * New version of app is available
                  */
@@ -127,11 +127,11 @@ use \Lobby\Need;
                 <tbody>
                   <tr>
                     <td>Installed in</td>
-                    <td><?php echo $App->appDir;?></td>
+                    <td><?php echo $App->dir;?></td>
                   </tr>
                   <tr>
                     <td>Folder</td>
-                    <td><h6><?php $folderSize = FS::getSize($App->appDir);echo FS::normalizeSize($folderSize);?></h6></td>
+                    <td><h6><?php $folderSize = FS::getSize($App->dir);echo FS::normalizeSize($folderSize);?></h6></td>
                   </tr>
                   <tr>
                     <td title="Size occupied in database">App Data</td>
@@ -179,7 +179,9 @@ use \Lobby\Need;
                     <p><a class="chip">Version <?php echo $App->info["version"];?></a></p>
                     <div style="margin-top: 10px;">
                       <?php
-                      if($App->enabled)
+                      if($App->hasUpdate())
+                        echo "<cl/>" . \Lobby::l("/admin/update.php", "Update", "class='btn orange'");
+                      else if($App->enabled)
                         echo \Lobby::l("/admin/apps.php?app=$app&action=disable" . CSRF::getParam(), "Disable", "class='btn'");
                       else
                         echo \Lobby::l("/admin/apps.php?app=$app&action=enable" . CSRF::getParam(), "Enable", "class='btn green'");

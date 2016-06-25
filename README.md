@@ -4,7 +4,7 @@ Lobby installer for Windows
 
 ## Install Lobby
 
-The MSI setup file for Lobby is at ["LobbyInstaller/Lobby.msi"](https://raw.githubusercontent.com/LobbyOS/windows-installer/master/LobbyInstaller/Lobby.msi).
+The folder `Lobby` is the standalone package. `Lobby/lobby` has the PHP code of Lobby.
 
 ## Compiling PHP
 

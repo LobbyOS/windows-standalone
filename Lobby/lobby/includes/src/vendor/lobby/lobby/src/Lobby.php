@@ -10,7 +10,7 @@ class Lobby {
   /**
    * Version & Release date
    */
-  public static $version, $versionReleased;
+  public static $version, $versionName, $versionReleased;
   
   /**
    * Debugging Mode
@@ -87,7 +87,8 @@ class Lobby {
     \Assets::config(array(
       "basePath" => L_DIR,
       "baseURL" => self::getURL(),
-      "serveFile" => "includes/serve-assets.php"
+      "serveFile" => "includes/serve-assets.php",
+      "debug" => self::getConfig("debug")
     ));
   }
   
@@ -119,8 +120,14 @@ class Lobby {
     }
   }
   
-  public static function getConfig($key){
-    return isset(self::$config[$key]) ? self::$config[$key] : false;
+  public static function getConfig($key, $subKey = null){
+    return isset(self::$config[$key]) ? (
+      isset(self::$config[$key][$subKey]) ? self::$config[$key][$subKey] : false
+    ) : false;
+  }
+  
+  public static function getVersion($codename = false){
+    return self::$version . ($codename ? " " . self::$versionName : "");
   }
   
   /**
@@ -136,9 +143,12 @@ class Lobby {
      */
     if(is_array($msg)){
       $type = $msg[0];
-      $msg = ucfirst($type) . " Error - " . $msg[1];
-    }else if($msg != "" && self::$debug === true){
-      $msg = !is_string($msg) ? serialize($msg) : $msg;
+      $logMSG = ucfirst($type) . " Error - " . $msg[1];
+    }else if(self::$debug === false)
+      return false;
+    
+    if($msg != null){
+      $logMSG = !is_string($msg) ? serialize($msg) : $msg;
     }
     
     /**
@@ -150,8 +160,8 @@ class Lobby {
       /**
        * Format the log message 
        */
-      $msg = "[" . date("Y-m-d H:i:s") . "] $msg";
-      \Lobby\FS::write($logFile, $msg, "a");
+      $logMSG = "[" . date("Y-m-d H:i:s") . "] $logMSG";
+      \Lobby\FS::write($logFile, $logMSG, "a");
     }
     
     /**
@@ -159,7 +169,7 @@ class Lobby {
      * So register error in class
      */
     if(isset($type) && $type === "fatal"){
-      Response::showError($msg);
+      Response::showError(ucfirst($msg[0]) . " Error", $msg[1]);
     }
   }
   

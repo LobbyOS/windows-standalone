@@ -1,5 +1,8 @@
-archives
-archives/*
+archives/
 compile-php
 compile-php/*
 Lobby/lobby/*
+Lobby/Lobby.exe.config
+Lobby/Lobby.pdb
+Lobby/Lobby.xml
+Lobby/Lobby.pdb

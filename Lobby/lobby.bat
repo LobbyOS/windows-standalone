@@ -1,7 +1,7 @@
 :: This command tells the program not display every command and its output.
 @echo off
 
-::Get directory of where this script is located
+:: Get directory of where this script is located
 SET workingDir=%~dp0
 
 call %workingDir:~0,-1%\set-permissions.bat

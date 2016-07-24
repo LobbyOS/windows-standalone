@@ -1,5 +1,5 @@
-:: This command tells the program not display every command and its output.
-@echo off
+:: This command tells the program to display every command and its output.
+@echo on
 
 :: Get directory of where this script is located
 SET workingDir=%~dp0

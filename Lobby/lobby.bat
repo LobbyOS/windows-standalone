@@ -1,3 +1,6 @@
+:: This command tells the program not display every command and its output.
+@echo off
+
 ::Get directory of where this script is located
 SET workingDir=%~dp0
 
